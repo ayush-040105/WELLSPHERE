@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diaphragmatic Breathing Exercise</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('default.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+        }
+        .dropdown {
+            margin-bottom: 1rem;
+        }
+        select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #007bff;
+        }
+        .button {
+            padding: 0.8rem 1.5rem;
+            margin: 1rem;
+            border-radius: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .vertical-box {
+            height: 300px;
+            width: 50px;
+            position: relative;
+            margin: 2rem auto;
+        }
+        .ball {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        @keyframes breathing {
+            0% { top: 0; }
+            25% { top: 100px; }
+            50% { top: 200px; }
+            75% { top: 100px; }
+            100% { top: 0; }
+        }
+        .breath-text {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dropdown">
+            <label for="bg-select">Change Background:</label>
+            <select id="bg-select" onchange="changeBg(this.value)">
+                <option value="default.jpeg">Default</option>
+                <option value="f1.jpeg">Forest 1</option>
+                <option value="f2.jpeg">Forest 2</option>
+                <option value="beach.jpg">Beach</option>
+                <option value="l.png">Mountain</option>
+                <option value="lsp2.jpeg">Landscape</option>
+               </select>
+        </div>
+        <h1>Diaphragmatic Breathing Exercise</h1>
+        <p>Follow the ball movement to practice diaphragmatic breathing.</p>
+        <div class="vertical-box">
+            <div class="ball" id="ball"></div>
+        </div>
+        <div class="breath-text" id="breathText">Inhale</div>
+        <button class="button" id="startButton" onclick="toggleBreathing()">Start</button>
+    </div>
+    <script>
+        let isBreathing = false;
+        function changeBg(image) { document.body.style.backgroundImage = 'url(' + image + ')'; }
+
+window.onload = function() { changeBg('default.jpeg'); };
+        function toggleBreathing() {
+            const ball = document.getElementById('ball');
+            const button = document.getElementById('startButton');
+            const breathText = document.getElementById('breathText');
+            if (isBreathing) {
+                ball.style.animation = '';
+                breathText.textContent = 'Inhale';
+                button.textContent = 'Start';
+            } else {
+                ball.style.animation = 'breathing 12s infinite';
+                let phases = ['Inhale', 'Hold', 'Exhale', 'Hold'];
+                let i = 0;
+                setInterval(() => {
+                    breathText.textContent = phases[i % phases.length];
+                    i++;
+                }, 3000);
+                button.textContent = 'Stop';
+            }
+            isBreathing = !isBreathing;
+        }
+    </script>
+</body>
+</html>
