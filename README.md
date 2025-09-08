@@ -32,9 +32,12 @@ WellSphere is an AI-powered mental health support platform designed to help indi
 **Technologies Used**
 -------------
 - Python
-- Scikit-learn / TensorFlow (ML model)
-- Flask / Streamlit (for UI)
-- NLP for chatbot integration
+- Scikit-learn (ML Model)
+- HTML
+- CSS
+- JS
+- Streamlit (for UI)
+- mistral api, liama api (chatbot)
 
 **Installation**
 -------------
@@ -49,8 +52,8 @@ cd WellSphere
 ```
 3. Install required dependencies
 ```
-pip install -r requirements.txt
-```
+pip install scikit-learn streamlit
+```  
 4. Run the application
 ```
 python streamlit run app.py
