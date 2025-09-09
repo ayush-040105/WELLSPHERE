@@ -71,7 +71,6 @@ python streamlit run app.py
 **Future Scope**
 -------------
 - Add database support for saving historical assessments and tracking improvements.
-- Integrate audio-guided meditations and advanced mindfulness practices.
 - Expand chatbot personalities with more customization options.
 - Enable professional help portal integration for high-risk cases.
 
